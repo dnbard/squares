@@ -1,0 +1,93 @@
+body{
+    background: #faf8ef;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: 0 !important;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+#app{
+    max-width: 960px;
+    min-width: 360px;
+    margin: auto;
+    min-height: 50px;
+    text-align: center;
+}
+
+.level{
+    display: inline-block;
+    background: #bbada0;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.row{
+    margin: auto;
+    text-align: center;
+}
+
+.block{
+    width: 160px;
+    height: 160px;
+    display: inline-block;
+    margin: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 30pt;
+    font-weight: bold;
+    padding: 61px 0;
+    box-sizing: border-box;
+    background: #CCC0B3;
+    color: #776e65;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+    vertical-align: top;
+    transition: 0.25s all;
+    border: 0px solid;
+    text-align: center;
+    overflow: hidden;
+}
+
+.block1{
+    background: #eee4da;
+}
+
+.block2{
+    background: #ede0c8;
+}
+
+.block3{
+    background: #f2b179;
+}
+
+.block4{
+    background: #f59563;
+}
+
+.block5{
+    background: #f67c5f;
+}
+
+.block6{
+    background: #f65e3b;
+}
+
+.block7{
+    background: #edcf72;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.4), inset 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.block8{
+    background: #edcc61;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.4), inset 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.block.error{
+    box-shadow: inset 0 0 15px 5px red;
+}
