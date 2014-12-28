@@ -1,4 +1,24 @@
 function Level(element, levelNumber){
+    var btnNextLevel = $('#btnNextLevel');
+
+    btnNextLevel.click(_.bind(function(){
+        btnNextLevel.hide();
+
+        PubSub.publish(events.LEVEL.FINISH, {
+            level: levelNumber,
+            time: this.levelTime
+        });
+
+        levelNumber ++;
+        element.empty();
+
+        this.base = this.calculateLevelBase();
+        this.raw = this.provide(levelNumber);
+        this.blockCount = this.calculateBlockCount(levelNumber);
+        this.build();
+        this.timestamp = null;
+    }, this));
+
     element.empty();
 
     this.base = this.calculateLevelBase();
@@ -22,16 +42,17 @@ function Level(element, levelNumber){
             return;
         }
 
+        if (!this.timestamp){
+            this.timestamp = new Date();
+            PubSub.publish(events.LEVEL.START);
+        }
+
         if (parseInt(value) < parseInt(maxValue)){
             target.addClass('error');
             setTimeout(function(){
                 target.removeClass('error');
             }, 250);
             return;
-        }
-
-        if (!this.timestamp){
-            this.timestamp = new Date();
         }
 
         this.blockCount --;
@@ -49,17 +70,11 @@ function Level(element, levelNumber){
         }
 
         if (this.blockCount === 0){
-            alert((new Date() - this.timestamp) / 1000 + 's');
+            this.levelTime = (new Date() - this.timestamp) / 1000;
 
-            levelNumber ++;
+            btnNextLevel.show();
 
-            element.empty();
-
-            this.base = this.calculateLevelBase();
-            this.raw = this.provide(levelNumber);
-            this.blockCount = this.calculateBlockCount(levelNumber);
-            this.build();
-            this.timestamp = null;
+            PubSub.publish(events.LEVEL.COMPLETE);
         }
     }, this));
 }
